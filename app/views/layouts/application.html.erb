@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DemoBlog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <section class="hero is-primary is-medium">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <%= link_to 'Project Conversation Application', projects_path, class: "navbar-item" %>
+              <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+              <div class="navbar-end">
+                 <% if user_signed_in? %>
+                    Logged in as <strong><%= current_user.email %></strong>.
+                    <%= link_to "Edit profile", edit_user_registration_path, class: "navbar-link" %> |
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-link"  %> |
+                  <% else %>
+                    <%= link_to "Sign up", new_user_registration_path, class: "navbar-link"  %> |
+                    <%= link_to "Login", new_user_session_path, class: "navbar-link"  %> |
+                  <% end %>
+                  <%= link_to "Create New Project", new_project_path, class:"navbar-item" %>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title m-2">
+            <%= yield :page_title %>
+          </h1>
+        </div>
+      </div>
+    </section>
+    <%= yield %>
+  </body>
+</html>

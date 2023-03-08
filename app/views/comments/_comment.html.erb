@@ -1,0 +1,17 @@
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+
+        <strong><%= User.find(comment.user_id).email %>:</strong>
+        <%= comment.comment_text %>
+        </p>
+      </div>
+    </div>
+
+    <% if current_user.id == comment.user_id %>
+        <%= button_to "Delete", project_comment_path(project_id: comment.project_id, id: comment.id), method: :delete %>
+    <% end %>
+  </article>
+</div>

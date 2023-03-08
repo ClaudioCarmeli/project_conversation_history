@@ -1,0 +1,43 @@
+<% content_for :page_title, @project.name %>
+
+<section class="section">
+    <div class="container">
+        <nav class="level d-flex">
+          <!-- Left side -->
+          <div class="d-flex level-left">
+            <p class="level-item m-2">
+                <strong>Actions</strong>
+            </p>
+          </div>
+          <!-- Right side -->
+          <div class="d-flex level-right">
+              <p class="level-item m-2">
+                <%= link_to "Edit", edit_project_path(@project), class:"button" %>
+              </p>
+              <p class="level-item m-2">
+                <%= link_to "Delete", project_path(@project), method: :destroy, class:"btn-danger" %>
+                </p>
+          </div>
+        </nav>
+        <hr/>
+
+        <div class="content">
+            <h2>Title</h2>
+            <%= @project.title %>
+        </div>
+    </div>
+</section>
+
+
+<section class="section comments">
+    <div class="container">
+        <h2 class="subtitle is-5"><strong><%= @project.comments.count %></strong> Comments</h2>
+        <%= render @project.comments %>
+        <div class="comment-form">
+            <hr />
+            <h3 class="subtitle is-3">Leave a reply</h3>
+             <%= render 'comments/form' %>
+        </div>
+    </div>
+</section>
+

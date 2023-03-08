@@ -1,0 +1,34 @@
+<div class="section m-4">
+<%= simple_form_for @project do |f| %>
+  <div class="field">
+    <div class="control m-2">
+      <%= f.input :name, input_html: { class: 'input' }, wrapper: false, label_html: { class: 'label' } %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control m-2">
+      <%= f.input :title, input_html: { class: 'input' }, wrapper: false, label_html: { class: 'label' } %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control d-flex">
+      <p class="m-2">is Active ? </p>
+      <%= f.check_box :status, input_html: { class: 'checkbox' }, wrapper: false, label_html: { class: 'label' } %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control m-2">
+      <%= f.input :description, input_html: { class: 'textarea' }, wrapper: false, label_html: { class: 'label' }  %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.text_field :user_id, value: current_user.id, style: "display: none" %>
+  </div>
+
+  <%= f.button :submit, 'Save Project', class: "btn-primary m-4" %>
+<% end %>
+</div>
